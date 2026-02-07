@@ -35,7 +35,7 @@ const HeroSection = () => {
               className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4"
             >
               Hi, I'm{" "}
-              <span className="gradient-text">Rubina Khan</span>
+              <span className="gradient-text">Amit Kumar Sahu</span>
             </motion.h1>
 
             <motion.p
@@ -90,7 +90,7 @@ const HeroSection = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-2 border-primary/30 glow-effect animate-float">
                 <img
                   src={profileImg}
-                  alt="Rubina Khan"
+                  alt="Amit Kumar Sahu"
                   className="w-full h-full object-cover"
                   loading="eager"
                 />
