@@ -34,14 +34,24 @@ const ProjectsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="section-padding">
-      <div className="container-max" ref={ref}>
+    <section id="projects" className="section-padding relative">
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[200px] pointer-events-none" />
+
+      <div className="container-max relative" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-1 rounded-full text-xs font-medium uppercase tracking-wider glass-card text-primary mb-4"
+          >
+            My work
+          </motion.span>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
             My <span className="gradient-text">Projects</span>
           </h2>
@@ -54,20 +64,28 @@ const ProjectsSection = () => {
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-xl overflow-hidden group hover:scale-[1.02] transition-transform"
+              initial={{ opacity: 0, y: 50, rotateX: 10 }}
+              animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8 }}
+              className="glass-card rounded-xl overflow-hidden group cursor-default"
             >
-              {/* Gradient placeholder for project image */}
-              <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                <span className="text-4xl font-heading font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors">
+              {/* Gradient placeholder */}
+              <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden`}>
+                <motion.span
+                  className="text-6xl font-heading font-bold text-foreground/10 group-hover:text-foreground/30 transition-all duration-500"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                >
                   {project.title.charAt(0)}
-                </span>
+                </motion.span>
+                {/* Hover shine */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                />
               </div>
 
               <div className="p-6">
-                <h3 className="font-heading font-semibold text-lg mb-2">{project.title}</h3>
+                <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.desc}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -78,13 +96,19 @@ const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <div className="flex gap-3">
-                  <button className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-foreground transition-colors">
+                <div className="flex gap-4">
+                  <motion.button
+                    whileHover={{ x: 4 }}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-foreground transition-colors"
+                  >
                     <ExternalLink size={14} /> Live Demo
-                  </button>
-                  <button className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ x: 4 }}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     <Github size={14} /> GitHub
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
