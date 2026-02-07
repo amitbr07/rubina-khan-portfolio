@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container-max px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground flex items-center gap-1">
-            © 2026 Rubina Khan. Made with <Heart size={14} className="text-primary" /> 
+            © 2026 Amit Kumar Sahu. Made with <Heart size={14} className="text-primary" /> 
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
